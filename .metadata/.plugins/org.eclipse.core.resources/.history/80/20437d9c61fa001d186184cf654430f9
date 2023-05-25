@@ -1,0 +1,8 @@
+package javaact;
+public class main {
+	public static void main(String[] args) {
+		basic inventory = new basic();
+		Login login = new Login(inventory);
+		login.setVisible(true); // This will make the login window visible
+	}
+}

@@ -1,0 +1,10 @@
+package javaact;
+
+public class javaactmain {
+
+	public static void main(String[] args) {
+		new Javaact();
+
+	}
+
+}
