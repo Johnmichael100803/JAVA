@@ -13,21 +13,57 @@ import javax.swing.*;
 
 
 public class Dashboard extends JFrame {
-	
+
+	public Dashboard() {
+        setTitle("Dashboard");
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        initComponents();
+        Dashboard();
+
+        setVisible(true);
+    }
+
+
+    private void initComponents() {
+       
+        JLabel welcomeLabel = new JLabel("Welcome to the Dashboard");
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(welcomeLabel, BorderLayout.CENTER);
+
+        
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Confirm Logout", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    dispose();
+                    new Login();
+                }
+            }
+        });
+        add(logoutButton, BorderLayout.SOUTH);
+    }
+
+
 			JButton [] buttonselect = new JButton[2];
 	      
-			ImageIcon imageIcon = new ImageIcon("inventoryicon.png");
-	        Image image = imageIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			ImageIcon imageIcon = new ImageIcon("inventoryimg.png");
+	        Image image = imageIcon.getImage().getScaledInstance(165, 165, Image.SCALE_SMOOTH);
 	        ImageIcon scaledImageIcon = new ImageIcon(image);
 	        
-	        ImageIcon imageIcon1 = new ImageIcon("saleicon.png");
-	        Image image1 = imageIcon1.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
+	        ImageIcon imageIcon1 = new ImageIcon("saleimg.png");
+	        Image image1 = imageIcon1.getImage().getScaledInstance(165, 165, Image.SCALE_SMOOTH);
 	        ImageIcon scaledImageIcon1 = new ImageIcon(image1);
 	        
-	        ImageIcon img = new ImageIcon(new ImageIcon("bgdash1.jpg").getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH));
+	        ImageIcon img = new ImageIcon(new ImageIcon("bgg.png").getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH));
 	    	JLabel background = new JLabel("", img, JLabel.CENTER);
 	    	
-	    	ImageIcon img2 = new ImageIcon(new ImageIcon("left-arrow.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+	    	ImageIcon img2 = new ImageIcon(new ImageIcon("leftarrowbtn.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
 	    	JLabel back = new JLabel("", img2, JLabel.CENTER);
 	    	
 	    	JLabel [] saleinvents =new JLabel[2];
@@ -39,29 +75,29 @@ public class Dashboard extends JFrame {
 	    	JLabel timeLabel =new JLabel();
 	    	JLabel dateLabel =new JLabel();
 	    	
-	    	JLabel dash =new JLabel("DashBoard", JLabel.CENTER);
+	    	JLabel dash =new JLabel("<html><i>DashBoard</i></html>", JLabel.CENTER);
 
-	    	ImageIcon img3 = new ImageIcon(new ImageIcon("close.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+	    	ImageIcon img3 = new ImageIcon(new ImageIcon("closebtn.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 	    	JLabel close = new JLabel("", img3, JLabel.CENTER);
 	    	
-	  Dashboard(){
+	 void Dashboard(){
 		
 	    this.setUndecorated(true);
 		this.setTitle("Select ");
 		this.setSize(400,280);
-		this.getContentPane().setBackground(Color.decode("#205072"));
+		this.getContentPane().setBackground(Color.decode("#3ba4c4"));
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		
 		
 		dash.setBounds(0,20,400,60);
-		dash.setFont(new Font("Cambria", Font.BOLD, 30));
-		dash.setForeground(Color.GRAY);
+		dash.setFont(new Font(" ", Font.BOLD, 30));
+		dash.setForeground(Color.BLACK);
 		
 		close.setBounds(375,5,20,20);
-		close.setFont(new Font("Cambria", Font.BOLD, 16));
-		close.setForeground(Color.RED);
+		close.setFont(new Font(" ", Font.BOLD, 16));
+		close.setForeground(Color.BLACK);
 		
 		close.addMouseListener(new MouseAdapter() {
             @Override
@@ -77,11 +113,11 @@ public class Dashboard extends JFrame {
 		
 		background.setBounds(0,0,400,300);
 		
-	     	timeLabel.setBounds(40,10,100,30);
+	     	timeLabel.setBounds(180,10,100,30);
 	        timeLabel.setFont(new Font("Arial", Font.BOLD,10));
-	        timeLabel.setForeground(Color.WHITE);
-	        dateLabel.setForeground(Color.WHITE);
-	        dateLabel.setBounds(40,0,200,30);
+	        timeLabel.setForeground(Color.BLACK);
+	        dateLabel.setForeground(Color.BLACK);
+	        dateLabel.setBounds(160,0,200,30);
 	        dateLabel.setFont(new Font("Arial", Font.BOLD, 10));
 		  Thread updateTimeThread = new Thread(() -> {
 	            while (true) {
@@ -118,7 +154,7 @@ public class Dashboard extends JFrame {
 			saleinvents[i].setText(labels[i]);
 			saleinvents[i].setBounds(y, 70, 150, 25);
 			saleinvents[i].setFont(new Font("Cambria", Font.BOLD, 20));
-			saleinvents[i].setForeground(Color.GRAY);
+			saleinvents[i].setForeground(Color.BLACK);
 			this.add(saleinvents[i]);
 			y += 170;
 		}
@@ -129,8 +165,8 @@ public class Dashboard extends JFrame {
 			buttonselect[i].setBounds(x,100 , 160, 170);
 			buttonselect[i].setFocusable(false);
 			buttonselect[i].setOpaque(false);
-			buttonselect[i].setBorder(BorderFactory.createMatteBorder(3,3,3,3,Color.GRAY));
-			buttonselect[i].setBackground(Color.WHITE);
+			buttonselect[i].setBorder(BorderFactory.createMatteBorder(3,3,3,3,Color.BLACK));
+			buttonselect[i].setBackground(Color.BLACK);
 			this.add(buttonselect[i]);
 			
 			x =+ 210;
@@ -153,14 +189,14 @@ public class Dashboard extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Point_Of_Sales sub =new Point_Of_Sales();
-		            sub.Point_Of_Sales();
+				pos sub =new pos();
+		            sub.pos();
 		            dispose();
 				  }});
 		
 		back.setBounds(5,5,30,30);
 		back.setFont(new Font("Cambria", Font.BOLD, 16));
-		back.setForeground(Color.RED);
+		back.setForeground(Color.GRAY);
 		
 		back.addMouseListener(new MouseAdapter() {
             @Override

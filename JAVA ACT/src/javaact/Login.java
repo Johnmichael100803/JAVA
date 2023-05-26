@@ -18,8 +18,8 @@ public class Login extends JFrame implements ActionListener{
     
     JCheckBox showPassword = new JCheckBox();
 
-    String username = "admin";
-    String password = "admin1234";
+    String username = "1";
+    String password = "1";
 
      Login() {
     	
@@ -81,25 +81,25 @@ public class Login extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(e.getSource().equals(btnLogin)) {
-            if(username.equals(txtUsername.getText()) 
-                    && password.equals(new String (txtPassword.getPassword()))) {
+        if (e.getSource().equals(btnLogin)) {
+            if (username.equals(txtUsername.getText()) && password.equals(new String(txtPassword.getPassword()))) {
                 JOptionPane.showMessageDialog(this, "Login Successfully!");
                 this.dispose();
-                new Dashboard();
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Incorrect Username/Password!",
-                        "Incorrect Credentials", JOptionPane.WARNING_MESSAGE);
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        new Dashboard();
+                    }
+                });
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect Username/Password!", "Incorrect Credentials", JOptionPane.WARNING_MESSAGE);
             }
         }
-        if(e.getSource().equals(btnCancel)) {
-            int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?",
-                    "Exit", JOptionPane.YES_NO_OPTION);
-            if(res == JOptionPane.YES_OPTION) {
+        if (e.getSource().equals(btnCancel)) {
+            int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+            if (res == JOptionPane.YES_OPTION) {
                 this.dispose();
             }
         }
     }
+    
 }

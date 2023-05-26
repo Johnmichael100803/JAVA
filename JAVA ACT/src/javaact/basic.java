@@ -19,6 +19,9 @@ import javax.swing.table.TableModel;
 
 public class basic extends JFrame implements ActionListener {
 
+	ImageIcon img2 = new ImageIcon(new ImageIcon("leftarrowbtn.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+	JLabel back = new JLabel("", img2, JLabel.CENTER);
+	
 	// this will create a new Panel with BorderLayout
 	JPanel tblPanel = new JPanel(new BorderLayout());
 
@@ -40,6 +43,7 @@ public class basic extends JFrame implements ActionListener {
 	JButton btnDelete = new JButton();
 	JButton btnSave = new JButton();
 	JButton btnCancel = new JButton();
+	JButton btnback = new JButton();
 
 	String[] column = new String[] {
 			"Item Code",
@@ -128,6 +132,12 @@ public class basic extends JFrame implements ActionListener {
 		btnSave.setFocusable(false);
 		btnSave.addActionListener(this);
 		btnSave.setEnabled(false);
+		
+		btnback.setBounds(50, 320, 90, 20);
+		btnback.setText("Back");
+		btnback.setFocusable(false);
+		btnback.addActionListener(this);
+		
 
 		btnCancel.setBounds(240, 280, 90, 20);
 		btnCancel.setText("Cancel");
@@ -159,6 +169,8 @@ public class basic extends JFrame implements ActionListener {
 				}
 			}
 		});
+		
+
 
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(sorter);
@@ -178,6 +190,7 @@ public class basic extends JFrame implements ActionListener {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
+				
 
 				int rows = table.getSelectedRow();
 				if (rows == -1) {
@@ -192,13 +205,17 @@ public class basic extends JFrame implements ActionListener {
 				}
 
 			}
+			
+			
 
 		});
+
 
 		tblPanel.setBounds(350, 20, 600, 370);
 		tblPanel.setBackground(Color.white);
 		tblPanel.add(scroll);
 
+		this.add(btnback);
 		this.add(tblPanel);
 		this.add(txtSearch);
 		this.add(btnStockin);
@@ -215,6 +232,14 @@ public class basic extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		 if (e.getSource().equals(btnback)) {
+	            int res = JOptionPane.showConfirmDialog(this, "Back to DashBoard?", "Exit", JOptionPane.YES_NO_OPTION);
+	            if (res == JOptionPane.YES_OPTION) {
+	                this.dispose();
+	                new  Dashboard();
+	            }
+	        }
 
 		if (e.getSource() == btnAdd) {
 
