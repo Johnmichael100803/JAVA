@@ -44,7 +44,7 @@ public class Dashboard extends JFrame {
 	    	ImageIcon img3 = new ImageIcon(new ImageIcon("close.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 	    	JLabel close = new JLabel("", img3, JLabel.CENTER);
 	    	
-	  Dashboard(){
+	 void Dashboard(){
 		
 	    this.setUndecorated(true);
 		this.setTitle("Select ");
